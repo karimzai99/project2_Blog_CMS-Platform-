@@ -75,3 +75,6 @@ The Blog Management System is a robust web application designed to provide users
 
 ## Unsloved problems:
 
+## TRELLO 
+ [Trello](https://trello.com/invite/b/mXxp4KHp/ATTI7420a553a4a2d8e3d8d412c9e1d603ae777066D7/blog-cms-platform)
+
