@@ -3,6 +3,18 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.9",
     "express": "^4.18.3",
-    "mongosh": "^2.1.5"
-  }
+    "mongoose": "^8.2.2",
+    "mongosh": "^2.1.5",
+    "passport": "^0.7.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "project2_blog_cms-platform-",
+  "description": "The Blog Management System is a robust web application designed to provide users with a seamless experience in creating, managing, and organizing blog posts. Whether you're a blogger, or content creator, this system offers essential features and a user-friendly interface to streamline your blogging process.",
+  "version": "1.0.0",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
