@@ -1,5 +1,10 @@
+<%- include('../partials/header.ejs') %>
+<h1>Select blog to read</h1>
 
-<%- include('../partials/header.ejs') %> 
-<h1> Select blog to read </h1>
+<% blogs.forEach(elm => { %>
+<h3><%= elm.title %></h3>
 
-<%- include('../partials/footer.ejs') %> 
+<p> creator: <%= elm.createdBy.userName %> </p>
+
+
+<% }); %> <%- include('../partials/footer.ejs') %>

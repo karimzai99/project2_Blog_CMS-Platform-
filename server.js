@@ -3,12 +3,14 @@ const mongoose = require("mongoose");
 
 const passport = require("passport");
 
+const blogController=require("./controllers/blogController.js")
+
 require("dotenv").config();
 
 const app = express();
 
 app.set("view engine", "ejs")
-
+app.use('/blogs', blogController)
 // MongoDB Connection
 
 const DBURI = process.env.MONGODBURI;
