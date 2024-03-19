@@ -5,8 +5,9 @@
   <% if(locals.isBlogOwner) { %>
   <a class="btn2" href="/new-post/<%=locals.blogID%>">Create a new Post</a>
 
-  <% } posts.forEach(elm => { %> <% if(locals.isBlogOwner) { %>
+  <% } posts.forEach(elm => { %>
   <div style="position: relative">
+    <% if(locals.isBlogOwner) { %>
     <form method="POST" action="/post?_method=DELETE">
       <a class="btn3" href="/edit-post/<%=elm.id%>">Edit post</a>
       <input type="hidden" name="postId" value="<%=elm.id%>" />

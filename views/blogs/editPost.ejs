@@ -1,21 +1,30 @@
 <%- include('../partials/header.ejs') %>
 <div class="container">
-  <h2>Create a New Blogger Post</h2>
-  <form action="/new-post" method="post">
+  <h2>Edit Post</h2>
+  <form action="/edit-post" method="post">
     <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required />
-    <label for="content">Content:</label>
-    <textarea
-      id="content"
-      name="content"
+    <input
+      type="text"
+      id="title"
+      name="title"
+      value="<%=locals.post?.title%>"
       required
-      class="post_content"
-    ></textarea>
+    />
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" required class="post_content">
+<%=locals.post?.body%></textarea
+    >
     <input
       type="hidden"
       id="blog_id"
       name="blog_id"
-      value="<%=locals.blog_id%>"
+      value="<%=locals.post?.blogId%>"
+    />
+    <input
+      type="hidden"
+      id="post_id"
+      name="post_id"
+      value="<%=locals.post?.id%>"
     />
 
     <input type="submit" value="Post" />

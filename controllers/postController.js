@@ -40,3 +40,23 @@ app.delete("/post", async (req, res) => {
     res.redirect("/blog/" + req.body.blogId); // add the new post the id
   }
 });
+
+app.get("/edit-post/:post_id", async (req, res) => {
+  // mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
+  //   const blogId = new mongoose.Types.ObjectId(req.params.blog_id);
+  const post = await Post.findById(req.params.post_id).populate("createdBy");
+  res.render("blogs/editPost", { post });
+});
+
+app.post("/edit-post", async (req, res) => {
+  // mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
+  if (!req.body.title || !req.body.content || !req.body.post_id) {
+    res.send("wrong data");
+  } else {
+    await Post.findByIdAndUpdate(req.body.post_id, {
+      title: req.body.title,
+      body: req.body.content,
+    });
+    res.redirect("/post/" + req.body.post_id); // add the new post the id
+  }
+});
