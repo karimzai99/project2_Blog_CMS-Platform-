@@ -7,3 +7,21 @@ app.get("/blogs", async (req, res) => {
   const blogs = await Blog.find().populate("createdBy");
   res.render("blogs", { blogs });
 });
+
+app.get("/new-blog", async (req, res) => {
+  // const blogs = await Blog.find().populate("createdBy");
+  res.render("blogs/newBlog");
+});
+
+app.post("/new-blog", async (req, res) => {
+  // mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
+  if (!req.body.title) {
+    res.render("blogs/newBlog", { wrongData: true });
+  } else {
+    const blog1 = await Blog.create({
+      title: req.body.title,
+      createdBy: req.session.loggedInUser,
+    });
+    res.redirect("/blog/" + blog1.id);
+  }
+});

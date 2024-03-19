@@ -146,3 +146,25 @@ li a:hover {
 .footer p {
   margin: 0;
 }
+
+.btn {
+  background: #3535c0;
+  color: white;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: -54px;
+  float: right;
+  text-decoration: none;
+}
+
+.btn2 {
+  background: #376d21;
+  color: white;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: -54px;
+  float: right;
+  text-decoration: none;
+}

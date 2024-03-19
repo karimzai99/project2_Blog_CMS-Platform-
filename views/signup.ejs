@@ -10,6 +10,9 @@
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required />
     <input type="submit" value="Sign Up" />
+    <% if(locals.error) { %>
+    <p style="color: #800"><%=locals.error%></p>
+    <% } %>
   </form>
   <div class="login-link">
     <p>Already have an account? <a href="/login">Login</a></p>

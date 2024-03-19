@@ -23,6 +23,13 @@ app.use(function (req, res, next) {
   next();
 });
 
+// login
+
+app.get("/login", (req, res) => {
+  res.render("login");
+  // res.send('hello')
+});
+
 app.post("/login", async (req, res) => {
   // mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
   if (!req.body.email || !req.body.password) {
@@ -34,25 +41,11 @@ app.post("/login", async (req, res) => {
     });
     if (user1) {
       req.session.loggedInUser = user1; // Set session identifier
-      req.session.save(function (err) {
-        if (err) return next(err);
-        res.redirect("/blogs");
-      });
-      //   res.redirect("/blogs");
+      res.redirect("/blogs");
     } else {
       res.render("login", { wrongData: true });
     }
   }
-  //   const blogId = new mongoose.Types.ObjectId(req.params.blog_id);
-  //   const posts = await Post.find({ blogId }).populate("createdBy");
-  //   res.render("blogs/blog", { posts });
-});
-
-// login
-
-app.get("/login", (req, res) => {
-  res.render("login");
-  // res.send('hello')
 });
 
 // sign up
@@ -60,6 +53,31 @@ app.get("/login", (req, res) => {
 app.get("/signup", (req, res) => {
   res.render("signup");
   // res.send('hello')
+});
+
+app.post("/signup", async (req, res) => {
+  // mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
+  if (!req.body.email || !req.body.password || !req.body.username) {
+    res.render("signup", { error: "Wrong username, email or password." });
+  } else {
+    const user1 = await User.findOne({
+      email: req.body.email,
+    });
+    if (user1) {
+      // req.session.loggedInUser = user1; // Set session identifier
+      // res.redirect("/blogs");
+      res.render("signup", { error: "User with same email already exists." });
+    } else {
+      const newUser = await User.create({
+        userName: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+      });
+      req.session.loggedInUser = newUser;
+      res.redirect("/blogs");
+      //   res.render("signup", { error: true });
+    }
+  }
 });
 
 app.get("/logout", (req, res) => {

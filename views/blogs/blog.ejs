@@ -2,8 +2,9 @@
 
 <div class="main">
   <h2>Select a post to read</h2>
-
-  <% posts.forEach(elm => { %>
+  <% if(locals.isBlogOwner) { %>
+  <a class="btn2" href="/new-post/<%=locals.blogID%>">Create a new Post</a>
+  <% } posts.forEach(elm => { %>
   <a href="/post/<%=elm.id%>">
     <div class="blog-card">
       <h3 class="blog-title"><%= elm.title %></h3>
