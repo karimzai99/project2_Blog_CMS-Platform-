@@ -1,3 +1,7 @@
+/*
+used chatGPT as a helper here and also i did by my self as well.
+*/
+
 body {
   margin: 0;
   padding: 0;
@@ -147,24 +151,40 @@ li a:hover {
   margin: 0;
 }
 
-.btn {
+.btn,
+.btn2,
+.btn3,
+.btn4 {
   background: #3535c0;
   color: white;
   display: inline-block;
   padding: 8px;
   border-radius: 4px;
-  margin-top: -54px;
-  float: left;
   text-decoration: none;
+  cursor: pointer;
+  font-size: 11pt;
+  font-family: sans-serif;
 }
 
+.btn {
+  margin-top: -54px;
+  float: left;
+}
 .btn2 {
-  background: #376d21;
-  color: white;
-  display: inline-block;
-  padding: 8px;
-  border-radius: 4px;
+  background: #196d24;
   margin-top: -54px;
   float: right;
-  text-decoration: none;
+}
+
+.btn3,
+.btn4 {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.btn4 {
+  border: 0;
+  box-shadow: none;
+  background-color: #800;
+  margin-right: 80px;
 }

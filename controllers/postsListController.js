@@ -14,5 +14,5 @@ app.get("/blog/:blog_id", async (req, res) => {
   ) {
     isBlogOwner = true;
   }
-  res.render("blogs/blog", { posts, isBlogOwner, blogID: blog._id });
+  res.render("blogs/postsList", { posts, isBlogOwner, blogID: blog._id });
 });

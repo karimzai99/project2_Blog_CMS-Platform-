@@ -1,4 +1,5 @@
 // Require the Mongoose package
+// took a little bit diffrent approach my brother help me out with this. for defualt we hardCoded some data.. 
 const mongoose = require("mongoose");
 
 // create a new Schema
@@ -34,17 +35,10 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 const Post = mongoose.model("Post", postSchema);
-// Seeding
+
+// Seeding function 
 const seedDB = async () => {
-  // mongoose.connection.collections["users"].drop(function (err) {
-  //   console.log("collection dropped");
-  // });
-  // mongoose.connection.collections["blogs"].drop(function (err) {
-  //   console.log("collection dropped");
-  // });
-  // mongoose.connection.collections["posts"].drop(function (err) {
-  //   console.log("collection dropped");
-  // });
+ // helped from Borther
   const usersCount = await User.countDocuments({});
   let user1;
   let blog1;
@@ -57,6 +51,7 @@ const seedDB = async () => {
   }
   const blogCount = await Blog.countDocuments({});
   if (blogCount == 0) {
+    // hard coded the first blogs for test and also if there is no data at all. 
     blog1 = await Blog.create({
       title: "my first blog",
       createdBy: user1,
@@ -66,8 +61,10 @@ const seedDB = async () => {
       createdBy: user1,
     });
   }
+  
   const postCount = await Post.countDocuments({});
   if (postCount == 0) {
+    // hard coded if data is zoro in database
     Post.create({
       title: "This is the first article",
       body: "This is the body text. 11111 This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. \nThis is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. This is the body text. \nThis is the body text. This is the body text. This is the body text. This is the body text. ",
@@ -89,7 +86,9 @@ const seedDB = async () => {
   }
 };
 
-seedDB();
+seedDB(); // invoked 
+
+
 // Export your schema as a Monogoose model.
-// The Mongoose model will be accessed in `models/index.js`
+
 module.exports = { User, Blog, Post };

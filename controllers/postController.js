@@ -27,6 +27,16 @@ app.post("/new-post", async (req, res) => {
       blogId: req.body.blog_id,
       createdBy: req.session.loggedInUser,
     });
-    res.redirect("/post/" + post1.id);
+    res.redirect("/post/" + post1.id); // add the new post the id
+  }
+});
+
+app.delete("/post", async (req, res) => {
+  // mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
+  if (!req.body.postId) {
+    res.send("No post id.");
+  } else {
+    await Post.findByIdAndDelete(req.body.postId);
+    res.redirect("/blog/" + req.body.blogId); // add the new post the id
   }
 });

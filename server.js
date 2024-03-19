@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const mehodOverride = require("method-override");
 
 // const passport = require("passport");
 
@@ -31,12 +32,13 @@ db.on("connected", function () {
 // Middleware
 
 app.use(express.static("public"));
+app.use(mehodOverride("_method"));
 
 // Routes
 
 const authController = require("./controllers/authController.js");
-const blogsController = require("./controllers/blogsController.js");
-const blogController = require("./controllers/blogController.js");
+const blogsListController = require("./controllers/blogsListController.js");
+const postsListController = require("./controllers/postsListController.js");
 const postController = require("./controllers/postController.js");
 
 app.get("/", (req, res) => {
@@ -44,12 +46,12 @@ app.get("/", (req, res) => {
   // res.send('hello')
 });
 
-// new post
+// // new post
 
-app.get("/new", (req, res) => {
-  res.render("blogs/post");
-  // res.send('hello')
-});
+// app.get("/new", (req, res) => {
+//   res.render("blogs/post");
+//   // res.send('hello')
+// });
 
 //
 

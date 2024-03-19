@@ -5,7 +5,7 @@ const app = require("../app.js");
 
 app.get("/blogs", async (req, res) => {
   const blogs = await Blog.find().populate("createdBy");
-  res.render("blogs", { blogs });
+  res.render("blogs/blogsList", { blogs });
 });
 
 app.get("/new-blog", async (req, res) => {
@@ -20,7 +20,7 @@ app.post("/new-blog", async (req, res) => {
   } else {
     const blog1 = await Blog.create({
       title: req.body.title,
-      createdBy: req.session.loggedInUser,
+      createdBy: req.session.loggedInUser, // session current user is logged in
     });
     res.redirect("/blog/" + blog1.id);
   }

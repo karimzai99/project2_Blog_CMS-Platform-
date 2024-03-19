@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="main">
+  <h2>Select a post to read</h2>
+  <% if(locals.isBlogOwner) { %>
+  <a class="btn2" href="/new-post/<%=locals.blogID%>">Create a new Post</a>
+
+  <% } posts.forEach(elm => { %> <% if(locals.isBlogOwner) { %>
+  <div style="position: relative">
+    <form method="POST" action="/post?_method=DELETE">
+      <a class="btn3" href="/edit-post/<%=elm.id%>">Edit post</a>
+      <input type="hidden" name="postId" value="<%=elm.id%>" />
+      <input type="hidden" name="blogId" value="<%=locals.blogID%>" />
+      <button type="submit" class="btn4">Delete post</button>
+    </form>
+
+    <% } %>
+    <a href="/post/<%=elm.id%>">
+      <div class="blog-card">
+        <h3 class="blog-title"><%= elm.title %></h3>
+        <p class="blog-creator">creator: <%= elm.createdBy.userName %></p>
+      </div>
+    </a>
+  </div>
+  <% }); %>
+</div>
+<%- include('../partials/footer.ejs') %>

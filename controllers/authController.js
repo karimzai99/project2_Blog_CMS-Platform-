@@ -1,8 +1,10 @@
+// data from the schema 
 const { Blog, User, Post } = require("../models/schema.js");
+
 const mongoose = require("mongoose");
 const express = require("express");
 const session = require("express-session");
-// const app = express(); is moved to a separate file so it can be imported in different controllers.
+// const app = express(); is moved to a separate file so it can be imported in different controllers. brother helped me
 const app = require("../app.js");
 require("dotenv").config();
 
@@ -14,11 +16,12 @@ app.use(
     secret: process.env.SESSIONKEY,
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 8 * 60 * 60 * 1000 },
+    cookie: { secure: false, maxAge: 8 * 60 * 60 * 1000 }, // took to long solve 
   })
 );
 
-app.use(function (req, res, next) {
+// brother helped me
+app.use(function (req, res, next) { // next passes control to the next middleware 
   res.locals.loggedInUser = req.session.loggedInUser;
   next();
 });
@@ -63,9 +66,8 @@ app.post("/signup", async (req, res) => {
     const user1 = await User.findOne({
       email: req.body.email,
     });
-    if (user1) {
-      // req.session.loggedInUser = user1; // Set session identifier
-      // res.redirect("/blogs");
+    if (user1) { // if user already exist 
+
       res.render("signup", { error: "User with same email already exists." });
     } else {
       const newUser = await User.create({
@@ -80,6 +82,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+// logout route
 app.get("/logout", (req, res) => {
   req.session.loggedInUser = null;
   res.redirect("/");
