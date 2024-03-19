@@ -1,13 +1,12 @@
-const express = require("express");
-const { Blog, User } = require("../models/schema.js");
+const { Blog, User, Post } = require("../models/schema.js");
+const mongoose = require("mongoose");
 
-// Router allows us to handle routing outisde of server.js
-const router = express.Router();
+// const app = express(); is moved to a separate file so it can be imported in different controllers.
+const app = require("../app.js");
 
-router.get("/", async (req, res) => {
-  const blogs = await Blog.find().populate("createdBy");
-  res.render("blogs", { blogs });
-  //   res.send("hello");
+app.get("/blog/:blog_id", async (req, res) => {
+  // mongoose.Types.ObjectId('569ed8269353e9f4c51617aa')
+  const blogId = new mongoose.Types.ObjectId(req.params.blog_id);
+  const posts = await Post.find({ blogId }).populate("createdBy");
+  res.render("blogs/blog", { posts });
 });
-
-module.exports = router;

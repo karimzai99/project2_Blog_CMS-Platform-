@@ -3,14 +3,20 @@ const mongoose = require("mongoose");
 
 const passport = require("passport");
 
-const blogController=require("./controllers/blogController.js")
+const blogsController = require("./controllers/blogsController.js");
+const blogController = require("./controllers/blogController.js");
+const postController = require("./controllers/postController.js");
+
+// Server
+const PORT = process.env.PORT || 3000;
 
 require("dotenv").config();
 
-const app = express();
+// const app = express();
+const app = require("./app.js");
 
-app.set("view engine", "ejs")
-app.use('/blogs', blogController)
+app.set("view engine", "ejs");
+// app.use('/blogs', blogsController)
 // MongoDB Connection
 
 const DBURI = process.env.MONGODBURI;
@@ -19,40 +25,45 @@ mongoose.connect(DBURI);
 
 const db = mongoose.connection;
 
-module.exports = {db: db}
+module.exports = { db: db };
 
-db.on('connected', function() {
+db.on("connected", function () {
   console.log(`Connected to MongoDB ${db.name} at ${db.host}:${db.port}`);
 });
 
-
-
 // Middleware
+
+app.use(express.static("public"));
 
 // Routes
 
-app.get('/', (req, res) => {
-    res.render('index' )
-    // res.send('hello')
-})
+app.get("/", (req, res) => {
+  res.render("index");
+  // res.send('hello')
+});
 
 // login
 
-app.get('/login', (req, res) => {
-    res.render('login' )
-    // res.send('hello')
-})
+app.get("/login", (req, res) => {
+  res.render("login");
+  // res.send('hello')
+});
 
-// sign up 
+// sign up
 
-app.get('/signup', (req, res) => {
-    res.render('signup' )
-    // res.send('hello')
-})
+app.get("/signup", (req, res) => {
+  res.render("signup");
+  // res.send('hello')
+});
 
+// new post
 
-// Server
-const PORT = process.env.PORT || 3000;
+app.get("/new", (req, res) => {
+  res.render("blogs/post");
+  // res.send('hello')
+});
+
+//
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

@@ -1,13 +1,12 @@
 <%- include('../partials/header.ejs') %>
 
 <div class="main">
-  <h2>Select blog to read</h2>
+  <h2>Select a post to read</h2>
 
-  <% blogs.forEach(elm => { %>
-  <a href="/blog/<%=elm.id%>">
+  <% posts.forEach(elm => { %>
+  <a href="/post/<%=elm.id%>">
     <div class="blog-card">
       <h3 class="blog-title"><%= elm.title %></h3>
-
       <p class="blog-creator">creator: <%= elm.createdBy.userName %></p>
     </div>
   </a>

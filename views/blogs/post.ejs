@@ -1,4 +1,10 @@
-<%- include('../partials/header.ejs') %> 
-<h1> post title </h1>
+<%- include('../partials/header.ejs') %>
 
-<%- include('../partials/footer.ejs') %> 
+<div class="main">
+  <div class="blog-card">
+    <h2><%=post.title%></h2>
+    <p class="blog-creator">creator: <%= post.createdBy.userName %></p>
+    <p class="blog-body"><%= post.body %></p>
+  </div>
+</div>
+<%- include('../partials/footer.ejs') %>
