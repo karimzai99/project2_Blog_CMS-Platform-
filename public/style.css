@@ -188,3 +188,9 @@ li a:hover {
   background-color: #800;
   margin-right: 80px;
 }
+
+.small-card {
+  width: 200px;
+  float: left;
+  margin-right: 20px;
+}

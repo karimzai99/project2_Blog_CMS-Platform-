@@ -7,7 +7,7 @@
   <a class="btn" href="/new-blog">Create a new blog</a>
   <% } blogs.forEach(elm => { %>
   <a href="/blog/<%=elm.id%>">
-    <div class="blog-card">
+    <div class="blog-card small-card">
       <h3 class="blog-title"><%= elm.title %></h3>
 
       <p class="blog-creator">creator: <%= elm.createdBy?.userName %></p>

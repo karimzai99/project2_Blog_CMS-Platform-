@@ -1,5 +1,7 @@
 <%- include('../partials/header.ejs') %>
 <div class="container">
+  <a href="/blog/<%=post.blogId%>">go back to blog</a>
+
   <h2>Edit Post</h2>
   <form action="/edit-post" method="post">
     <label for="title">Title:</label>
