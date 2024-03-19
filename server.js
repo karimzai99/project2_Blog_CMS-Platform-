@@ -1,11 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const passport = require("passport");
-
-const blogsController = require("./controllers/blogsController.js");
-const blogController = require("./controllers/blogController.js");
-const postController = require("./controllers/postController.js");
+// const passport = require("passport");
 
 // Server
 const PORT = process.env.PORT || 3000;
@@ -16,6 +12,7 @@ require("dotenv").config();
 const app = require("./app.js");
 
 app.set("view engine", "ejs");
+
 // app.use('/blogs', blogsController)
 // MongoDB Connection
 
@@ -37,22 +34,13 @@ app.use(express.static("public"));
 
 // Routes
 
+const authController = require("./controllers/authController.js");
+const blogsController = require("./controllers/blogsController.js");
+const blogController = require("./controllers/blogController.js");
+const postController = require("./controllers/postController.js");
+
 app.get("/", (req, res) => {
   res.render("index");
-  // res.send('hello')
-});
-
-// login
-
-app.get("/login", (req, res) => {
-  res.render("login");
-  // res.send('hello')
-});
-
-// sign up
-
-app.get("/signup", (req, res) => {
-  res.render("signup");
   // res.send('hello')
 });
 
