@@ -1,4 +1,3 @@
-
 # Blog CMS - Platform
 
 The Blog Management System is a robust web application designed to provide users with a seamless experience in creating, managing, and organizing blog posts. Whether you're a blogger, or content creator, this system offers essential features and a user-friendly interface to streamline your blogging process.
@@ -23,9 +22,7 @@ The Blog Management System is a robust web application designed to provide users
 
 2. As a **reader**, I want to be able to search for specific blog posts using keywords or phrases, making it convenient to find content that aligns with my interests.
 
-
-
-4. As a **website administrator**, I want to ensure the security of user data, implementing secure user authentication through JWT or OAuth 2.0.
+3. As a **website administrator**, I want to ensure the security of user data, implementing secure user authentication through JWT or OAuth 2.0.
 
 ### Wireframes
 
@@ -38,16 +35,20 @@ The Blog Management System is a robust web application designed to provide users
 ## Technology used
 
 - **Backend:**
+
   - Node.js
   - Express.js
 
 - **Database:**
+
   - MongoDB
 
 - **Authentication:**
+
   - JWT or OAuth 2.0
 
 - **Frontend:**
+
   - HTML
   - CSS
   - JavaScript
@@ -57,11 +58,10 @@ The Blog Management System is a robust web application designed to provide users
   - Express Validator for input validation
   - Passport.js for authentication middleware
   - Mongoose for MongoDB object modeling
- 
 
 ## Approach Taken
 
-- 
+-
 
 ## Installation and Startup Instructions
 
@@ -73,8 +73,13 @@ The Blog Management System is a robust web application designed to provide users
 6. Run the application: `npm start` or `node app.js`
 7. Access the application in your browser: `http://localhost:3000`
 
-## Unsloved problems:
+## Unsolved Problems:
 
-## TRELLO 
- [Trello](https://trello.com/invite/b/mXxp4KHp/ATTI7420a553a4a2d8e3d8d412c9e1d603ae777066D7/blog-cms-platform)
+1. Implementation of a completely different page layout for readers.
+2. Integration of features such as feedback fading, likes, and comments.
+3. Addition of a search bar functionality for reader convenience.
+4. Incorporation of image support within the page.
 
+## TRELLO
+
+[Trello](https://trello.com/invite/b/mXxp4KHp/ATTI7420a553a4a2d8e3d8d412c9e1d603ae777066D7/blog-cms-platform)
